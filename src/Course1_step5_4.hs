@@ -17,13 +17,21 @@ asToken x
 tokenize :: String -> Maybe [Token]
 tokenize input = sequence [asToken x | x <- (words input)]
 
--- nextPositionsN :: Board -> Int -> (Board -> Bool) -> [Board]
--- nextPositionsN b n pred
---     | n < 0 = []
---     | otherwise = do
---         possible_next_states <- b >>= nextPositions
---         result <- nextPositionsN possible_next_states (n-1) pred
---         return $ filter pred $ result
+data Board = Board Integer deriving Show
+
+oddBoard :: Board -> Bool
+oddBoard (Board b) = odd b
+
+nextPositions (Board x) = map Board [x-1,x+1] 
+
+nextPositionsN :: Board -> Int -> (Board -> Bool) -> [Board]
+nextPositionsN b n pred
+    | n < 0 = []
+    | n == 0 = if pred b == True then [b] else []
+    | otherwise = do
+        possible_next_states <- nextPositions b
+        result <- nextPositionsN possible_next_states (n-1) pred
+        return result
 
 pythagoreanTriple :: Int -> [(Int, Int, Int)]
 pythagoreanTriple x = 
