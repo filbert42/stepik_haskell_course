@@ -21,6 +21,7 @@ sum'n'count x = (toInteger (sum (helper3 y)), (toInteger (length (helper3 y)))) 
 integration :: (Double -> Double) -> Double -> Double -> Double
 integration f a b 
     | a == b = f a
-    |otherwise = h * ((f a + f b)/2 + sum [f x | x <- [a + h,a + 2*h..b]]) where
+    |otherwise = h * ((f a + f b)/2 + helperSum) where 
+        helperSum = sum [f x | x <- [a + h,a + 2*h..b]]
         h = (b - a) / 1000000
 
