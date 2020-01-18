@@ -1,3 +1,5 @@
+module Course1_step3_1 where
+  
 addTwoElements :: a -> a -> [a] -> [a]
 addTwoElements x y = (x :) . (y :)
 

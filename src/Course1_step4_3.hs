@@ -1,6 +1,8 @@
+module Course1_step4_3 where
+
 import Data.Time.Clock
 import Data.Time.Format
-import System.Locale
+--import System.Locale
 
 timeToString :: UTCTime -> String
 timeToString = formatTime defaultTimeLocale "%a %d %T"

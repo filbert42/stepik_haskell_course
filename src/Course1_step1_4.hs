@@ -1,3 +1,5 @@
+module Course1_step1_4 where
+
 import Data.Char
 
 discount :: Double -> Double -> Double -> Double

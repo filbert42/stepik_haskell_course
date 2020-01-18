@@ -1,3 +1,5 @@
+module Course1_step2_3 where
+
 class Printable a where
     toString:: a -> String
     

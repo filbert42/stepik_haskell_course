@@ -1,4 +1,6 @@
-isumOdd :: [Integer] -> Integer
+module Course1_step3_5 where
+
+sumOdd :: [Integer] -> Integer
 sumOdd = foldr (\x s -> if x `mod` 2 == 1 then x + s else s) 0
 
 evenOnly :: [a] -> [a]

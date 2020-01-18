@@ -1,48 +1,38 @@
-name:                stepik-haskell-course
-version:             0.1.0.0
-github:              "githubuser/stepik-haskell-course"
-license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2020 Author name here"
-
+library:
+  source-dirs: src
+tests:
+  stepik-haskell-course-test:
+    source-dirs: test
+    main: Spec.hs
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - stepik-haskell-course
+copyright: 2020 Author name here
+maintainer: example@example.com
+dependencies:
+- split
+- old-locale
+- time >= 1.5
+- base >= 4.7 && < 5
+name: stepik-haskell-course
+version: 0.1.0.0
 extra-source-files:
 - README.md
 - ChangeLog.md
-
-# Metadata used when publishing your package
-# synopsis:            Short description of your package
-# category:            Web
-
-# To avoid duplicated efforts in documentation and dealing with the
-# complications of embedding Haddock markup inside cabal files, it is
-# common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/githubuser/stepik-haskell-course#readme>
-
-dependencies:
-- base >= 4.7 && < 5
-
-library:
-  source-dirs: src
-
+author: Author name here
+github: githubuser/stepik-haskell-course
+license: BSD3
 executables:
   stepik-haskell-course-exe:
-    main:                Main.hs
-    source-dirs:         app
+    source-dirs: app
+    main: Main.hs
     ghc-options:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
     - stepik-haskell-course
-
-tests:
-  stepik-haskell-course-test:
-    main:                Spec.hs
-    source-dirs:         test
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - stepik-haskell-course
+description: Please see the README on GitHub at <https://github.com/githubuser/stepik-haskell-course#readme>

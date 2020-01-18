@@ -1,3 +1,5 @@
+module Course1_step3_3 where
+
 fibStream :: [Integer]
 fibStream = 0 : 1 : zipWith (+) fibStream (tail fibStream) 
 
@@ -14,7 +16,7 @@ instance Enum Odd where
   toEnum x = Odd $ toInteger x
   fromEnum (Odd x) = fromInteger x
 
-change :: (Ord a, Num a) => a -> [[a]]
-change 0 = [[]]
-change s = [coin:ch | coin <- coins, coin <= s, ch <- (change $ s - coin)]
+change :: (Ord a, Num a) => [a] -> a -> [[a]]
+change coins 0 = [[]]
+change coins s = [coin:ch | coin <- coins, coin <= s, ch <- (change coins $ s - coin)]
 

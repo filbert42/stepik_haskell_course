@@ -1,3 +1,5 @@
+module Course1_step2_4 where
+  
 class KnownToGork a where
     stomp :: a -> a
     doesEnrageGork :: a -> Bool

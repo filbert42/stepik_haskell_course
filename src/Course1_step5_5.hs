@@ -1,3 +1,5 @@
+module Course1_step5_5 where
+
 main' :: IO ()
 main' = do
     putStrLn "What is your name?"

@@ -1,3 +1,7 @@
+module Course1_step5_4 where
+
+import Data.Char ( isDigit )
+
 data Token = Number Int | Plus | Minus | LeftBrace | RightBrace 
     deriving (Eq, Show)
 
@@ -13,13 +17,13 @@ asToken x
 tokenize :: String -> Maybe [Token]
 tokenize input = sequence [asToken x | x <- (words input)]
 
-nextPositionsN :: Board -> Int -> (Board -> Bool) -> [Board]
-nextPositionsN b n pred
-    | n < 0 = []
-    | otherwise = do
-        possible_next_states <- b >>= nextPositions
-        result <- nextPositionsN possible_next_states (n-1) pred
-        return $ filter pred $ result
+-- nextPositionsN :: Board -> Int -> (Board -> Bool) -> [Board]
+-- nextPositionsN b n pred
+--     | n < 0 = []
+--     | otherwise = do
+--         possible_next_states <- b >>= nextPositions
+--         result <- nextPositionsN possible_next_states (n-1) pred
+--         return $ filter pred $ result
 
 pythagoreanTriple :: Int -> [(Int, Int, Int)]
 pythagoreanTriple x = 

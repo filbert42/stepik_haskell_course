@@ -1,3 +1,7 @@
+module Course1_step3_6 where
+
+import Data.List (unfoldr)
+
 lastElem :: [a] -> a
 lastElem = foldl1 (\x y -> y)
 

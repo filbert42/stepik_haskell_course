@@ -1,3 +1,5 @@
+module Course1_step4_2 where
+
 import Data.List
 
 data Point = Point Double Double
@@ -23,10 +25,10 @@ instance Show Result' where
     show Success' = "Success"
     show (Fail' err) = "Fail: " ++ show err
 
-doSomeWork' :: SomeData -> Result'
-doSomeWork' d = case doSomeWork d of
-  (Success, 0) -> Success'
-  (Fail,  err) -> (Fail' err)
+-- doSomeWork' :: SomeData -> Result'
+-- doSomeWork' d = case doSomeWork d of
+--   (Success, 0) -> Success'
+--   (Fail,  err) -> (Fail' err)
 
 square :: Double -> Shape
 square a = Rectangle a a

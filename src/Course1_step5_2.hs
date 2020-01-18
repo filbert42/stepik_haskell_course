@@ -1,3 +1,5 @@
+module Course1_step5_2 where
+
 import Control.Monad (ap, liftM)
 
 data Log a = Log [String] a
@@ -22,6 +24,10 @@ instance Functor Log where
 instance Applicative Log where
   pure = return
   (<*>) = ap
+
+instance Monad Log where
+    return = returnLog
+    (>>=) = bindLog
 
 execLoggersList :: a -> [a -> Log a] -> Log a
 execLoggersList x list_of_funcs = foldl (>>=) (return x) list_of_funcs

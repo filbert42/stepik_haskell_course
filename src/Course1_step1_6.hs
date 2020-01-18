@@ -1,3 +1,5 @@
+module Course1_step1_6 where
+
 seqA :: Integer -> Integer
 seqA n 
     | elem n [0,1,2] = n + 1

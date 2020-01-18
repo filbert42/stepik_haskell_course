@@ -1,23 +1,27 @@
+module Course1_step4_6 where
+
 import Prelude hiding (lookup)
+import qualified Data.List as L
 
 newtype Xor = Xor { getXor :: Bool }
     deriving (Eq,Show)
 
+instance Semigroup Xor where
+    a <> b = Xor (a /= b)
+
 instance Monoid Xor where
     mempty = Xor False
-    mappend a b = Xor (a /= b)
 
 newtype Maybe' a = Maybe' { getMaybe :: Maybe a }
     deriving (Eq,Show)
 
+instance Semigroup a => Semigroup (Maybe' a) where
+    mempty <> (Maybe' Nothing) = Maybe' Nothing
+    (Maybe' Nothing) <> mempty = Maybe' Nothing
+    (Maybe' a) <> (Maybe' b) = Maybe' (a <> b)
+
 instance Monoid a => Monoid (Maybe' a) where
     mempty = Maybe' (Just mempty)
-    mappend mempty (Maybe' Nothing) = Maybe' Nothing
-    mappend (Maybe' Nothing) mempty = Maybe' Nothing
-    mappend (Maybe' a) (Maybe' b) = Maybe' $ mappend a b
-
-import Prelude hiding (lookup)
-import qualified Data.List as L
 
 class MapLike m where
     empty :: m k v
@@ -43,14 +47,14 @@ instance MapLike ListMap where
   fromList lmp = ListMap lmp
 
 
-class MapLike m where
-    empty :: m k v
-    lookup :: Ord k => k -> m k v -> Maybe v
-    insert :: Ord k => k -> v -> m k v -> m k v
-    delete :: Ord k => k -> m k v -> m k v
-    fromList :: Ord k => [(k,v)] -> m k v
-    fromList [] = empty
-    fromList ((k,v):xs) = insert k v (fromList xs)
+-- class MapLike m where
+--     empty :: m k v
+--     lookup :: Ord k => k -> m k v -> Maybe v
+--     insert :: Ord k => k -> v -> m k v -> m k v
+--     delete :: Ord k => k -> m k v -> m k v
+--     fromList :: Ord k => [(k,v)] -> m k v
+--     fromList [] = empty
+--     fromList ((k,v):xs) = insert k v (fromList xs)
 
 
 newtype ArrowMap k v = ArrowMap { getArrowMap :: k -> Maybe v }

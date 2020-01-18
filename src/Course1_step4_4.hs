@@ -1,6 +1,8 @@
+module Course1_step4_4 where
+
 import Data.Char(isDigit)
 import Data.Foldable
-import Data.List.Split
+import Data.List.Split 
 import Text.Read
 
 data Coord a = Coord a a

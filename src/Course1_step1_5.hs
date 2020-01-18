@@ -1,3 +1,5 @@
+module Course1_step1_5 where
+
 doubleFact :: Integer -> Integer 
 doubleFact n 
     | mod n 2 == 1 = product [1,3..n]

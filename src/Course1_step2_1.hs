@@ -1,3 +1,4 @@
+module Course1_step2_1 where
 import Data.Function
 
 getSecondFrom :: a -> b -> c -> b
