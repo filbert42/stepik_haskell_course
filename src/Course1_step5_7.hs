@@ -12,3 +12,14 @@ purchase item cost = writer ((), (Sum cost))
 
 total :: Shopping -> Integer
 total = getSum . execWriter
+
+type Shopping' = Writer (Sum Integer, [String]) ()
+
+purchase' :: String -> Integer -> Shopping'
+purchase' item cost = writer ((), (Sum cost, [item]))
+
+total' :: Shopping' -> Integer
+total' = getSum . fst . execWriter
+
+items' :: Shopping' -> [String]
+items' = snd . execWriter
